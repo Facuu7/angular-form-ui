@@ -152,23 +152,18 @@ angular.module('angular-form-ui').
                 if (!angular.isDefined(attrs.label)) {
                     attrs.label = "";
                 }
+                var labelBind = attrs.ngModel;
+                if (angular.isDefined(attrs.objLabel)) {
+                    labelBind += "['" + attrs.objLabel + "']";
+                }
                 if (!angular.isDefined(attrs.optExp)) {
                     throw new Error("A comprehension expression must be defined with the attribute optExp for selectBox");
                 }
                 var html = '<div class="ngSelectBox' + ((angular.isDefined(attrs.class)) ? ' ' + attrs.class : '') + '">' +
-                        '<span>{{ selectedOption || "' + attrs.label + '" }}</span>' +
+                        '<span>{{ ' + labelBind + ' || "' + attrs.label + '" }}</span>' +
                         '<select ng-model="' + attrs.ngModel + '" ng-options="' + attrs.optExp + '"' + ((attrs.required) ? ' required' : '') + '' + ((angular.isDefined(attrs.id)) ? ' id="'+attrs.id+'"' : '') + '' + ((attrs.name) ? ' name="' + attrs.name + '"' : '') + '></select>' +
                     '</div>';
                 return html;
-            },
-            link: function(scope, element, attrs) {
-                scope.$watch(attrs.ngModel, function () {
-                    var select = element[0].children[1];
-                    //when value changes, update the selectBox text)
-                    if (angular.isElement(element[0].firstChild) && angular.isDefined(select.options[select.selectedIndex])) {
-                        scope.selectedOption = angular.element(select.options[select.selectedIndex]).text();
-                    }
-                });
             }
         };
     });
