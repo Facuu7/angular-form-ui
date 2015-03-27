@@ -1,8 +1,23 @@
 {
-    "name": "angular-form-ui",
-    "version": "0.4.1",
-    "main": "./dist/*",
-    "dependencies": {
-        "angular": ">= 1.2.9"
-    }
+  "name": "angular-form-ui-opinaia",
+  "version": "0.4.1",
+  "main": "./dist/*",
+  "dependencies": {
+    "angular": ">= 1.2.9"
+  },
+  "homepage": "https://github.com/Facuu7/angular-form-ui",
+  "authors": [
+    "Facundo Pedrazzini <facundo.pedrazzini@opinaiapanel.com>"
+  ],
+  "keywords": [
+    "opinaia"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
